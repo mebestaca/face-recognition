@@ -16,7 +16,7 @@ class ItemLinkForm extends Component {
                             onChange={ this.props.onInputChange }/>
                         <button 
                             className='white bg-dark-green w-30 grow ph3 pv2 pointer f4'
-                            onClick={ this.props.onButtonClick }>
+                            onClick={ this.props.onSubmitImage }>
                             Detect
                         </button>
                     </div>

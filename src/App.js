@@ -3,6 +3,7 @@ import ParticlesBg from 'particles-bg'
 import Logo from './components/logo/Logo';
 import SignIn from './components/signin/SignIn';
 import Register from './components/register/Register';
+import Rank from './components/rank/Rank';
 import ItemLinkForm from './components/itemlinkform/ItemLinkForm';
 import FaceRecognition from './components/facerecognition/FaceRecognition';
 import { Component } from 'react';
@@ -15,8 +16,27 @@ class App extends Component {
       url: '',
       rectangle: {},
       route: 'signin',
-      isSignedIn: false
+      isSignedIn: false,
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined_date: ''
+      }
     }
+  }
+
+  loadUser = (data) => {
+    this.setState({
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        entries: data.entries,
+        joined_date: data.joined_date
+      }
+    });
   }
 
   onInputChange = (event) => {
@@ -44,12 +64,31 @@ class App extends Component {
   }
 
   onRouteChange = (route) => {
-    console.log(route);
     route === 'home' ? this.setState({ isSignedIn: true}) : this.setState({ isSignedIn: false });
     this.setState({route: route});
   }
 
-  onButtonClick = () => {
+  onSubmitImage = () => {
+    this.detectImage();
+    this.incrementEntry();
+  }
+
+  incrementEntry = () => {
+    fetch(`http://localhost:3000/image`, {
+      method: 'put',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: this.state.user.id
+      })
+    })
+    .then(response => response.json())
+    .then(count => {
+      console.log(count);
+      this.setState(Object.assign(this.state.user, { entries: count }));
+    });
+  }
+
+  detectImage = () => {
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     // In this section, we set the user authentication, user and app ID, model details, and the URL
     // of the image we want as an input. Change these strings to run your own example.
@@ -117,18 +156,19 @@ class App extends Component {
           (() => {
             if (route === 'signin') {
               return (
-                <SignIn onRouteChange={ this.onRouteChange } />
+                <SignIn onRouteChange={ this.onRouteChange } loadUser={ this.loadUser } />
               );
             }
             else if (route === 'register') {
               return (
-                <Register onRouteChange={ this.onRouteChange } />
+                <Register onRouteChange={ this.onRouteChange } loadUser={ this.loadUser }/>
               );
             }
             else {
               return (
                 <div>
-                  <ItemLinkForm onInputChange={ this.onInputChange } onButtonClick={ this.onButtonClick } />
+                  <Rank name={ this.state.user.name } entries={ this.state.user.entries } />
+                  <ItemLinkForm onInputChange={ this.onInputChange } onSubmitImage={ this.onSubmitImage } />
                   <FaceRecognition imageUrl= { url} rectangle={ rectangle }/>
                 </div>
               );
