@@ -47,10 +47,10 @@ class SignIn extends Component {
                 <div>
                     <h1 className='tc'>Sign In</h1>
                     <div className='flex pv2'>
-                        <label className='f4 ph3 w-30'>Username:</label>
+                        <label className='f4 ph3 w-30'>Email:</label>
                         <input 
                             className='f4 w-70'
-                            placeholder='email'
+                            placeholder='sample@email'
                             type='email'
                             name="email" 
                             id="email"  
