@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import './FaceRecognition.css';
+import Rectangle from '../rectangles/Rectangle';
 
 class FaceRecognition extends Component {
     
     render() {
         const rectangle = this.props.rectangle;
+                
         return (
             <div className='face-component-box'>
                 <div className='absolute mt2'>
@@ -13,14 +14,9 @@ class FaceRecognition extends Component {
                         height='auto' 
                         alt=''
                         src= {this.props.imageUrl} />
-                    <div className='bounding-box'
-                        style={{ 
-                            top: rectangle.topRow,
-                            right: rectangle.rightCol,
-                            bottom: rectangle.bottomRow,
-                            left: rectangle.leftCol
-                        }}>
-                    </div>
+                    {
+                        rectangle.map((m, i) => <Rectangle key={i} coordinates={m} />)
+                    }
                 </div>
             </div>
         );
