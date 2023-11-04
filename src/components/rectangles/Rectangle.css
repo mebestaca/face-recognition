@@ -1,0 +1,11 @@
+.face-component-box {
+    display: flex;
+    justify-content: center;
+}
+
+.bounding-box {
+    position: absolute;
+    border: 3px solid #00ff00;
+    background-color: transparent;
+    cursor: pointer;
+}
