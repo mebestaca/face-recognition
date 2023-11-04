@@ -14,7 +14,7 @@ class App extends Component {
     super();
     this.state = {
       url: '',
-      rectangle: {},
+      rectangle: [],
       route: 'signin',
       isSignedIn: false,
       user: {
@@ -46,17 +46,22 @@ class App extends Component {
   }
 
   getRectangle = (data) => {
-    const face = data.outputs[0].data.regions[0].region_info.bounding_box;
-    const image = document.getElementById('inputImage');
-    const width = Number(image.width);
-    const height = Number(image.height);
-
-    return {
-      leftCol: face.left_col * width,
-      topRow: face.top_row * height,
-      rightCol: width - (face.right_col * width),
-      bottomRow: height - (face.bottom_row * height)
+    const regions = data.outputs[0].data.regions.length;
+    
+    let rectangles = [];
+    for (let i = 0; i < regions; i++){
+      const face = data.outputs[0].data.regions[i].region_info.bounding_box;
+      const image = document.getElementById('inputImage');
+      const width = Number(image.width);
+      const height = Number(image.height);
+      rectangles.push({
+        leftCol: face.left_col * width,
+        topRow: face.top_row * height,
+        rightCol: width - (face.right_col * width),
+        bottomRow: height - (face.bottom_row * height)
+      });
     }
+    return rectangles;
   }
 
   drawRectangle = (coordinates) => {
@@ -83,7 +88,6 @@ class App extends Component {
     })
     .then(response => response.json())
     .then(count => {
-      console.log(count);
       this.setState(Object.assign(this.state.user, { entries: count }));
     });
   }
@@ -146,7 +150,6 @@ class App extends Component {
 
   render() {
     const { url, rectangle, route, isSignedIn } = this.state;
-
     return (
       <div >
         <ParticlesBg type='cobweb' num={150} bg={true} />
