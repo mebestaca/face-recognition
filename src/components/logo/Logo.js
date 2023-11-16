@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Tilt from 'react-parallax-tilt';
-import logo from './logo.png';
+import logo from '../../assets/logo.png';
 import './Logo.css';
 
 class Logo extends Component {
