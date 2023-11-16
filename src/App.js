@@ -8,24 +8,27 @@ import ItemLinkForm from './components/itemlinkform/ItemLinkForm';
 import FaceRecognition from './components/facerecognition/FaceRecognition';
 import { Component } from 'react';
 
+const initialState = {
+  url: '',
+  rectangle: [],
+  route: 'signin',
+  isSignedIn: false,
+  user: {
+    id: '',
+    name: '',
+    email: '',
+    entries: 0,
+    joined_date: ''
+  }
+}
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      url: '',
-      rectangle: [],
-      route: 'signin',
-      isSignedIn: false,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        entries: 0,
-        joined_date: ''
-      }
-    }
+    this.state = initialState;
   }
+
+  
 
   loadUser = (data) => {
     this.setState({
@@ -69,7 +72,7 @@ class App extends Component {
   }
 
   onRouteChange = (route) => {
-    route === 'home' ? this.setState({ isSignedIn: true}) : this.setState({ isSignedIn: false });
+    route === 'home' ? this.setState({ isSignedIn: true}) : this.setState(initialState);
     this.setState({route: route});
   }
 
@@ -89,7 +92,8 @@ class App extends Component {
     .then(response => response.json())
     .then(count => {
       this.setState(Object.assign(this.state.user, { entries: count }));
-    });
+    })
+    .catch(console.log);
   }
 
   detectImage = () => {
