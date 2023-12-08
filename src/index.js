@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './context/user/user.context';
-import { ImageProvider } from './context/image.context.jsx/image.context';
+import { ImageProvider } from './context/image/image.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
