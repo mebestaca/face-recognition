@@ -1,6 +1,6 @@
 import Rectangle from "../rectangles/Rectangle";
 import { useContext } from "react";
-import { ImageContext } from "../../context/image.context.jsx/image.context";
+import { ImageContext } from "../../context/image/image.context";
 
 
 const FaceRecognition = () => {
