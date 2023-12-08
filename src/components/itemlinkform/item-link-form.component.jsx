@@ -1,6 +1,6 @@
 import './ItemLinkForm.css';
 import { useContext } from 'react';
-import { ImageContext } from '../../context/image.context.jsx/image.context';
+import { ImageContext } from '../../context/image/image.context';
 import { UserContext } from '../../context/user/user.context'; 
 
 const ItemLinkForm = () => {
