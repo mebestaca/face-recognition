@@ -3,7 +3,7 @@ import NavigationButton from "../navigation-button/navigation-button.component";
 import { Outlet } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/user/user.context";
-import { ImageContext } from "../../context/image.context.jsx/image.context";
+import { ImageContext } from "../../context/image/image.context";
 import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
