@@ -1,8 +1,54 @@
 import { Fragment } from 'react';
 import Logo from '../logo/Logo';
 import FormInput from '../form-input/form-input.component';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../../context/user/user.context';
 
 const SignIn = () => {
+    const initialState = {
+        password: '',
+        email: '',
+    }
+    const nav = useNavigate();
+    const [user, setUser] = useState(initialState);
+    const {setCurrentUser} = useContext(UserContext);
+
+    const onEmailChange = (event) => {
+
+        setUser((prevState) => ({
+            ...prevState,
+            email: event.target.value
+        }));
+    }
+
+    const onPasswordChange = (event) => {
+
+        setUser((prevState) => ({
+            ...prevState,
+            password: event.target.value,
+        }));
+    }
+
+    const onSubmitCredentials = () => {
+        fetch(`http://localhost:3000/signin`, {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: user.email,
+                password: user.password
+            })
+        })
+        .then(response => response.json())
+        .then(user => {
+            if (user.id) {
+                setCurrentUser(user);
+                nav('/');
+            }
+        });
+    }
+
     return (
         <Fragment>
             <Logo/>
@@ -16,30 +62,30 @@ const SignIn = () => {
                             type:'email',
                             name:"email" ,
                             id:"email",  
-                            onChange:null 
+                            onChange:onEmailChange 
                         }}
                     
                     />
                     <FormInput 
-                        label="Email:"
+                        label="Password:"
                         inputOptions={{
                             placeholder:'password',
                             type:'password',
                             name:"password" ,
                             id:"password",  
-                            onChange:null 
+                            onChange:onPasswordChange 
                         }}
                     />
                     <div className='tc bt'>
                         <button 
                             className='mt2 white bg-dark-green grow ph3 pv2 pointer f4'
-                            onClick={ null }
+                            onClick={ onSubmitCredentials }
                         >
                                 Sign In
                         </button>
                         <p 
                             className='link dim grow f4 pointer'
-                            onClick={ null }
+                            onClick={ () => { nav('/register') } }
                         >
                             Register
                         </p>
