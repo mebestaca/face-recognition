@@ -1,10 +1,11 @@
 import './Rank.css';
+import { useContext } from 'react';
+import { UserContext } from '../../context/user/user.context';
 
 const Rank = () => {
-
-    const name = "tester";
-    const entries = 999;
-
+    const { currentUser } = useContext(UserContext);
+    const name = currentUser.name;
+    const entries = currentUser.entries;
     return(
         <div>
             <div className='rank-box'>
