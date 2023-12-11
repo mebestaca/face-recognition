@@ -53,7 +53,7 @@ const SignIn = () => {
         <Fragment>
             <Logo/>
             <div className='bg-white signup-box center shadow-3 br3 mt4 pv3 bg-washed-green' style={{ width: '400px' }}>
-                <div>
+                <div className='mh3'>
                     <h1 className='tc'>Sign In</h1>
                     <FormInput 
                         label="Email:"
