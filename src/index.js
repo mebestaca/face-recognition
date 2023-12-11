@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import App2 from './App2';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 import { BrowserRouter } from 'react-router-dom';
@@ -15,7 +14,7 @@ root.render(
     <BrowserRouter>
       <UserProvider>
         <ImageProvider>
-          <App2 />
+          <App />
         </ImageProvider>
       </UserProvider>
     </BrowserRouter>
