@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../../context/user/user.context';
+import FormInput from '../form-input/form-input.component';
 
 const Register = () => {
 
@@ -60,44 +61,38 @@ const Register = () => {
         <Fragment>
             <Logo/>
             <div className='bg-white signup-box center shadow-3 br3 mt4 pv3 bg-washed-green' style={{ width: '400px' }}>
-                <div>
+                <div className='mh3'>
                     <h1 className='tc'>Register</h1>
-                    <div className='flex pv2'>
-                        <label className='f4 ph3 w-30'>Username:</label>
-                        <input 
-                            className='f4 w-70' 
-                            type='text' 
-                            placeholder='username'
-                            name='username'
-                            id='username'
-                            onChange={ onUserChange }
-                        >
-                        </input>
-                    </div>
-                    <div className='flex pv2'>
-                        <label className='f4 ph3 w-30'>Email:</label>
-                        <input 
-                            className='f4 w-70' 
-                            type='email' 
-                            placeholder='sample@email.com'
-                            name='email'
-                            id='email'
-                            onChange={ onEmailChange }
-                        >
-                        </input>
-                    </div>
-                    <div className='flex pv2'>
-                        <label className='f4 ph3 w-30'>Password:</label>
-                        <input 
-                            className='f4 w-70' 
-                            type='password' 
-                            placeholder='password'
-                            name='password'
-                            id='password'
-                            onChange={ onPasswordChange }
-                        >
-                        </input>
-                    </div>
+                    <FormInput
+                        label= "Username:"
+                        inputOptions={{
+                            placeholder: 'username',
+                            type: 'text', 
+                            name: 'username',
+                            id: 'username',
+                            onChange:onUserChange
+                        }}
+                    />
+                    <FormInput
+                        label="Email"
+                        inputOptions={{
+                            placeholder:'sample@email.com',
+                            type:'email', 
+                            name:'email',
+                            id:'email',
+                            onChange:onEmailChange
+                        }}
+                    />
+                    <FormInput
+                        label="Password:"
+                        inputOptions={{
+                            placeholder: 'password',
+                            type: 'password',
+                            name: 'password',
+                            id: 'password',
+                            onChange: onPasswordChange
+                        }}
+                    />
                     <div className='tc bt'>
                         <button 
                             className='mt2 white bg-dark-green grow ph3 pv2 pointer f4'
