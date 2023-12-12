@@ -1,4 +1,4 @@
-import './Rank.css';
+import './rank.style.css';
 import { useContext } from 'react';
 import { UserContext } from '../../context/user/user.context';
 
