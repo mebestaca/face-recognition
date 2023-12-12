@@ -1,4 +1,4 @@
-import Rectangle from "../rectangles/Rectangle";
+import Rectangle from "../rectangles/rectangle.component";
 import { useContext } from "react";
 import { ImageContext } from "../../context/image/image.context";
 
