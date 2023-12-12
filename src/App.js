@@ -1,7 +1,7 @@
 import { Route, Routes  } from "react-router-dom";
 import Navigation from './components/navigation/navigation.component';
 import ParticlesBg from "particles-bg";
-import Home from "./components/home/home";
+import Home from "./components/home/home.component";
 import SignIn from "./components/signin/sign-in.component";
 import Register from "./components/register/register.component";
 import PrivateRoute from "./components/private-route/private-route.component";
