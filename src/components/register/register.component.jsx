@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import Logo from '../logo/Logo';
+import Logo from '../logo/logo.component';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useContext } from 'react';
