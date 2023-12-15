@@ -1,19 +1,20 @@
-import { Fragment } from 'react';
-import Logo from '../logo/logo.component';
-import FormInput from '../form-input/form-input.component';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../../context/user/user.context';
+import Logo from '../logo/logo.component';
+import FormInput from '../form-input/form-input.component';
+import ErrorMessage from '../error/error.component';
 
 const SignIn = () => {
+    const nav = useNavigate();
     const initialState = {
         password: '',
         email: '',
     }
-    const nav = useNavigate();
     const [user, setUser] = useState(initialState);
     const {setCurrentUser} = useContext(UserContext);
+    const [errorList, setErrorList] = useState([]);
 
     const onEmailChange = (event) => {
 
@@ -32,6 +33,25 @@ const SignIn = () => {
     }
 
     const onSubmitCredentials = () => {
+        const errors = [];
+
+        if (!user.email) {
+            errors.push("Email cannot be null");
+        }
+
+        if (!user.email.includes('@')) {
+            errors.push("Incorrect email format");
+        }
+
+        if (!user.password) {
+            errors.push("Password cannot be null");
+        }
+
+        if (errors.length > 0) {
+            setErrorList(errors);
+            return;
+        }
+
         fetch(`http://localhost:3000/signin`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
@@ -50,11 +70,16 @@ const SignIn = () => {
     }
 
     return (
-        <Fragment>
+        <>
             <Logo/>
             <div className='bg-white signup-box center shadow-3 br3 mt4 pv3 bg-washed-green' style={{ width: '400px' }}>
                 <div className='mh3'>
                     <h1 className='tc'>Sign In</h1>
+
+                    {
+                        errorList.length > 0 ? <ErrorMessage errorMessages={errorList} /> : <></>
+                    }
+
                     <FormInput 
                         label="Email:"
                         inputOptions={{
@@ -62,6 +87,8 @@ const SignIn = () => {
                             type:'email',
                             name:"email" ,
                             id:"email",  
+                            minLength: '3',
+                            required: true,
                             onChange:onEmailChange 
                         }}
                     
@@ -72,7 +99,9 @@ const SignIn = () => {
                             placeholder:'password',
                             type:'password',
                             name:"password" ,
-                            id:"password",  
+                            id:"password", 
+                            minLength: '6',
+                            required: true,
                             onChange:onPasswordChange 
                         }}
                     />
@@ -92,7 +121,7 @@ const SignIn = () => {
                     </div>
                 </div>
             </div>
-        </Fragment>
+        </>
     );
 }
 
