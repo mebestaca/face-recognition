@@ -81,7 +81,7 @@ const Register = () => {
         })
         .then(response => response.json()
         .then(user => {
-            if (user) {
+            if (user.id) {
                 setCurrentUser(user);
                 nav('/');
             }
