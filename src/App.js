@@ -11,14 +11,14 @@ const App = () => {
         <div>
             <ParticlesBg type='cobweb' num={150} bg={true} />
             <Routes>
-                <Route path='/' element={ <Navigation/> } >
+                <Route path='/face-recognition' element={ <Navigation/> } >
                     <Route index element={ 
                         <PrivateRoute>
                             <Home/>  
                         </PrivateRoute>
                     } />
-                    <Route path='/signin' element={ <SignIn/> } />
-                    <Route path='/register' element={ <Register/> } />
+                    <Route path='/face-recognition/signin' element={ <SignIn/> } />
+                    <Route path='/face-recognition/register' element={ <Register/> } />
                 </Route>
             </Routes>
         </div>
