@@ -13,9 +13,9 @@ const App = () => {
             <Routes>
                 <Route path='/face-recognition' element={ <Navigation/> } >
                     <Route index element={ 
-                        <PrivateRoute>
+                        // <PrivateRoute>
                             <Home/>  
-                        </PrivateRoute>
+                        // </PrivateRoute>
                     } />
                     <Route path='/face-recognition/signin' element={ <SignIn/> } />
                     <Route path='/face-recognition/register' element={ <Register/> } />
