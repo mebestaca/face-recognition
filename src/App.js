@@ -6,7 +6,7 @@ import SignIn from "./components/signin/sign-in.component";
 import Register from "./components/register/register.component";
 import PrivateRoute from "./components/private-route/private-route.component";
 
-const App2 = () => {
+const App = () => {
     return (
         <div>
             <ParticlesBg type='cobweb' num={150} bg={true} />
@@ -17,8 +17,8 @@ const App2 = () => {
                             <Home/>  
                         </PrivateRoute>
                     } />
-                    <Route path='signin' element={ <SignIn/> } />
-                    <Route path='register' element={ <Register/> } />
+                    <Route path='/signin' element={ <SignIn/> } />
+                    <Route path='/register' element={ <Register/> } />
                 </Route>
             </Routes>
         </div>
@@ -26,4 +26,4 @@ const App2 = () => {
     );
 }
 
-export default App2;
+export default App;
