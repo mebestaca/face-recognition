@@ -11,7 +11,7 @@ import { ImageProvider } from './context/image/image.context';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/face-recognition'>
       <UserProvider>
         <ImageProvider>
           <App />
