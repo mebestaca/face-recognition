@@ -42,7 +42,7 @@ const ItemLinkForm = () => {
     }
 
     const incrementEntry = () => {
-        fetch(`http://localhost:3000/image`, {
+        fetch(process.env.REACT_APP_API_URL_IMAGE, {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -57,7 +57,7 @@ const ItemLinkForm = () => {
     }
     
     const detectImage = () => {
-        fetch(`http://localhost:3000/imagedetect`, {
+        fetch(process.env.REACT_APP_API_URL_IMAGE_DETECT, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
