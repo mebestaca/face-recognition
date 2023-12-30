@@ -69,9 +69,7 @@ const Register = () => {
             setErrorList(errors);
             return;
         }
-
-        console.log(process.env.REACT_APP_API_URL_REGISTER);
-
+        
         fetch(`${process.env.REACT_APP_API_URL}/register`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json'},
