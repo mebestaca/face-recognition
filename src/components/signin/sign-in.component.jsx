@@ -52,7 +52,7 @@ const SignIn = () => {
             return;
         }
 
-        fetch(process.env.REACT_APP_API_URL_SIGNUP, {
+        fetch(`${process.env.REACT_APP_API_URL}/signin`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
