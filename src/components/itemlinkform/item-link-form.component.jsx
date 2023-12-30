@@ -57,8 +57,6 @@ const ItemLinkForm = () => {
     }
     
     const detectImage = () => {
-        console.log(`${process.env.REACT_APP_API_URL}/imagedetect`);
-
         fetch(`${process.env.REACT_APP_API_URL}/imagedetect`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
