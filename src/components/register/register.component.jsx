@@ -70,7 +70,9 @@ const Register = () => {
             return;
         }
 
-        fetch(process.env.REACT_APP_API_URL_REGISTER, {
+        console.log(process.env.REACT_APP_API_URL_REGISTER);
+
+        fetch(`${process.env.REACT_APP_API_URL}/register`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({
