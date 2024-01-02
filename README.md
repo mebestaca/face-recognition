@@ -7,8 +7,8 @@ A face recognition website built using ReactJS that utilizes Clarifai API to ide
   -  ReactJS
   -  HTML
   -  SASS
-  -  PostgreSQL
-  -  Backend
+  -  PostgreSQL, ExpressJS
+  -  Github pages
   -  External Libaries (Clarifai API, particles-bg, parallax-tilt, tachyons)
   -  Website Security
 
