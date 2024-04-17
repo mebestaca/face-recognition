@@ -14,3 +14,5 @@ A face recognition website built using ReactJS that utilizes Clarifai API to ide
 
 ## The homepage:
 ![alt text](https://github.com/mebestaca/assets-repo/blob/main/face-recognition/face-recognition.png?raw=true)
+
+**Note** Proejct is broken at the moment because of some backend issue that I don't have plan on fixing any time soon.
